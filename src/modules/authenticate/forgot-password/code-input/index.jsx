@@ -1,7 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CodeInput() {
+  const navigate = useNavigate();
+
+  function resetPassword() {
+    navigate("/auth/new-password");
+  }
   return (
     <div className="flex flex-col justify-center p-[7%] w-full">
       <div className="my-3">
@@ -40,8 +45,11 @@ export default function CodeInput() {
           </div>
         </div>
 
-        <button className="bg-blue-400 rounded-full my-3 p-1">
-          <Link to={"/auth/new-password"}>Continue</Link>
+        <button
+          className="bg-blue-400 rounded-full my-3 p-1"
+          onClick={resetPassword}
+        >
+          Continue
         </button>
       </form>
 

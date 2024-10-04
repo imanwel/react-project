@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CreateAccount() {
+  const navigate = useNavigate();
+
+  function createAccount() {
+    navigate("/auth/contact-info");
+  }
+
   return (
     <div className="flex flex-col justify-center w-full">
       <div className="my-3">
@@ -42,8 +48,11 @@ export default function CreateAccount() {
           />
         </div>
 
-        <button className="bg-blue-400 rounded-full my-3 p-1">
-          <Link to={"/auth/contact-info"}>Continue</Link>
+        <button
+          className="bg-blue-400 rounded-full my-3 p-1"
+          onClick={createAccount}
+        >
+          Continue
         </button>
       </form>
 

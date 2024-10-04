@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NewPassWord() {
+  const navigate = useNavigate();
+
+  function passwordChange() {
+    navigate("/auth/sign-in");
+  }
+
   return (
     <div className="flex flex-col justify-center p-[7%] w-full">
       <div className="my-3">
@@ -16,7 +22,7 @@ export default function NewPassWord() {
 
       <form className="flex flex-col px-4 gap-[10px]">
         <div className="flex flex-col">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">New password</label>
           <input
             className="p-[5px] rounded-[10px] outline-none"
             type="password"
@@ -26,7 +32,7 @@ export default function NewPassWord() {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="password">Confirm password</label>
+          <label htmlFor="password">Confirm new password</label>
           <input
             className="p-[5px] rounded-[10px] outline-none"
             type="password"
@@ -35,8 +41,11 @@ export default function NewPassWord() {
           />
         </div>
 
-        <button className="bg-blue-400 rounded-full my-3 p-1">
-          Recover password
+        <button
+          className="bg-blue-400 rounded-full my-3 p-1"
+          onClick={passwordChange}
+        >
+          Reset password
         </button>
       </form>
 

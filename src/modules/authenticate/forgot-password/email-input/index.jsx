@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ForgotPassWOrd() {
+  const navigate = useNavigate();
+
+  function sendCode() {
+    navigate("/auth/send-code");
+  }
+
   return (
     <div className="flex flex-col justify-center p-[7%] w-full">
       <div className="my-3">
@@ -24,8 +30,11 @@ export default function ForgotPassWOrd() {
           />
         </div>
 
-        <button className="bg-blue-400 rounded-full my-3 p-1">
-          <Link to={"/auth/send-code"}>Send code</Link>
+        <button
+          className="bg-blue-400 rounded-full my-3 p-1"
+          onClick={sendCode}
+        >
+          Send code
         </button>
       </form>
 

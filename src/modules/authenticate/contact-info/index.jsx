@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ContactInfo() {
+  const navigate = useNavigate();
+
+  function finishAccount() {
+    navigate("/auth/sign-in");
+  }
+
   return (
     <div className="flex flex-col justify-center w-full">
       <div className="my-5">
@@ -114,8 +120,11 @@ export default function ContactInfo() {
           </div>
         </div>
 
-        <button className="bg-blue-400 rounded-full my-3 p-1">
-          <Link to={"/"}>Finish</Link>
+        <button
+          className="bg-blue-400 rounded-full my-3 p-1"
+          onClick={finishAccount}
+        >
+          Finish
         </button>
       </form>
 
