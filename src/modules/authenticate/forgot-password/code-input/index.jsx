@@ -35,12 +35,14 @@ export default function CodeInput() {
           <div className="text-xs font-semibold p-4 flex gap-2 justify-end">
             <p>Didn't get a code?</p>
             <p className="text-[blue]">
-              <Link to={"/"}>Resend code</Link>
+              <Link to={""}>Resend code</Link>
             </p>
           </div>
         </div>
 
-        <button className="bg-blue-400 rounded-full my-3 p-1">Continue</button>
+        <button className="bg-blue-400 rounded-full my-3 p-1">
+          <Link to={"/auth/new-password"}>Continue</Link>
+        </button>
       </form>
 
       <div className="text-xs font-semibold flex gap-2 justify-center">

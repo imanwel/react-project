@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function NewPassWord() {
   return (
-    <div className="flex flex-col justify-center p-[7%] w-full gap-[20px]">
-      <div className="">
+    <div className="flex flex-col justify-center p-[7%] w-full">
+      <div className="my-3">
         <h2 className="text-center font-semibold text-[25px]">
           Create new password
         </h2>
@@ -39,9 +39,13 @@ export default function NewPassWord() {
           Recover password
         </button>
       </form>
-      <p className="text-center">
-        Don't have an account? <Link to={"/auth"}>Create one</Link>
-      </p>
+
+      <div className="text-xs font-semibold flex gap-2 justify-center">
+        <p>Don't have an account?</p>
+        <p className="text-[blue]">
+          <Link to={"/auth"}>Create one</Link>
+        </p>
+      </div>
     </div>
   );
 }
