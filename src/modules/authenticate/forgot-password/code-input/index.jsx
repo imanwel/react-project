@@ -13,7 +13,9 @@ export default function CodeInput() {
         <h2 className="text-center font-semibold text-[25px]">
           Recover password
         </h2>
-        <p className="text-center">enter the code sent to</p>
+        <p className="text-center">
+          enter the code sent to {"theemail@gmail.com"}
+        </p>
       </div>
 
       <form className="flex flex-col px-4 gap-[10px]">
