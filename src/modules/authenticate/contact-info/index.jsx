@@ -59,7 +59,7 @@ export default function ContactInfo() {
             <select
               name="tel"
               id="phoneNumber"
-              className="rounded-[10px] rounded-r-none  px-2 bg-slate-200"
+              className="rounded-[10px] rounded-r-none font-bold px-2 bg-slate-200"
             >
               <option value="">+234</option>
               <option value="">+233</option>
