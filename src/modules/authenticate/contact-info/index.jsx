@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import CustomButton from "../../../component/button";
 
 export default function ContactInfo() {
   const navigate = useNavigate();
@@ -120,12 +121,14 @@ export default function ContactInfo() {
           </div>
         </div>
 
-        <button
+        {/* <button
           className="bg-blue-400 rounded-full my-3 p-1"
           onClick={finishAccount}
         >
           Finish
-        </button>
+        </button> */}
+
+        <CustomButton onClick={finishAccount}>Finish</CustomButton>
       </form>
 
       <div className="text-xs font-semibold flex gap-2 justify-center">

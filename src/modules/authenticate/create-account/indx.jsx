@@ -1,11 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import InputField from "../../../component/Input";
 
 export default function CreateAccount() {
+  const [formBody, setFormBody] = useState({
+    Email: "",
+    Password: "",
+  });
+
+  function validateEmail(email) {
+    const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return pattern.test(email);
+  }
+
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [c_Pasword, set_Cpassword] = React.useState("");
   const navigate = useNavigate();
 
-  function createAccount() {
-    navigate("/auth/contact-info");
+  function createAccount(e) {
+    e.preventDefault();
+
+    if (validateEmail(email) && c_Pasword === password) {
+      navigate("/auth/contact-info");
+      // setEmail(email);
+    } else {
+      // alert("not an email");
+    }
+
+    // if (c_Pasword === password) {
+    //   console.log("correct");
+    //   // set_Cpassword(c_Pasword);
+    // } else {
+    //   console.log(null);
+    // }
+
+    const body = {
+      ...formBody,
+      Email: email,
+      Password: c_Pasword,
+    };
+
+    console.log(body);
+
+    let accountDetail;
+
+    if (localStorage.getItem("accountDetail") === null) {
+      accountDetail = [];
+    } else {
+      accountDetail = JSON.parse(localStorage.getItem("accountDetail"));
+    }
+    accountDetail.push(body);
+    localStorage.setItem("accountDetail", JSON.stringify(accountDetail));
   }
 
   return (
@@ -18,35 +64,34 @@ export default function CreateAccount() {
       </div>
 
       <form className="flex flex-col px-4 gap-[10px]">
-        <div className="flex flex-col">
-          <label htmlFor="email">Email</label>
-          <input
-            className="p-[5px] rounded-[10px] outline-none"
-            type="email"
-            id="email"
-            placeholder="example@gmail.com"
-          />
-        </div>
+        <InputField
+          label="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="User@email.com"
+          type={"email"}
+          error={email === "" ? false : !validateEmail(email) ? true : false}
+          message={"not an email"}
+        />
 
-        <div className="flex flex-col">
-          <label htmlFor="password">Password</label>
-          <input
-            className="p-[5px] rounded-[10px] outline-none"
-            type="password"
-            id="password"
-            placeholder="********"
-          />
-        </div>
+        <InputField
+          label="password"
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="*****"
+          type={"password"}
+          error={password === "" ? false : password.length < 8 ? true : false}
+          message={"password must not be less than 8"}
+        />
 
-        <div className="flex flex-col">
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            className="p-[5px] rounded-[10px] outline-none"
-            type="password"
-            id="confirmPassword"
-            placeholder="********"
-          />
-        </div>
+        <InputField
+          label="Confirm password"
+          onChange={(e) => set_Cpassword(e.target.value)}
+          placeholder="*****"
+          type={"password"}
+          error={
+            c_Pasword === "" ? false : c_Pasword !== password ? true : false
+          }
+          message={"incorrect password"}
+        />
 
         <button
           className="bg-blue-400 rounded-full my-3 p-1"
